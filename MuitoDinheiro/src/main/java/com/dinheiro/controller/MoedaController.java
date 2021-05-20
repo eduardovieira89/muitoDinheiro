@@ -75,7 +75,7 @@ public class MoedaController {
 	}
 	
 	@PostMapping(value="/{id}")
-	public String cadastroTaxaDeCambio(@PathVariable("id") long idMoedaOrigem, long idMoedaDestino, double taxa) {
+	public String cadastroTaxaDeCambio(@PathVariable("id") long idMoedaOrigem, long idMoedaDestino, double taxa, RedirectAttributes attributes) {
 		
 		Moeda moedaOrigem = moedaRepository.findById(idMoedaOrigem).orElseThrow(() -> new ResourceNotFoundException("Moeda com id: "+idMoedaOrigem+" não encontrada" ));
 		Moeda moedaDestino = moedaRepository.findById(idMoedaDestino).orElseThrow(() -> new ResourceNotFoundException("Moeda com id: "+idMoedaDestino+" não encontrada" ));
@@ -84,10 +84,8 @@ public class MoedaController {
 		
 		TaxaCambio taxaDeCambio = new TaxaCambio(origemDestino, taxa);
 		taxaCambioRepository.save(taxaDeCambio);
+		attributes.addFlashAttribute("mensagem", "Taxa de câmbio adicionado com sucesso!");
 		
-		System.out.println("Taxa de cambio: " + taxa);
-		System.out.println("Destino: " + idMoedaDestino);
-		System.out.println("Origem: " + idMoedaOrigem);
 		return "redirect:/moeda/"+idMoedaOrigem;
 	}
 	

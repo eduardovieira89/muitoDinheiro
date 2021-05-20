@@ -14,6 +14,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0" charset="utf-8" />
 <link rel="stylesheet" href="../style/styleCss.css" />
+<link rel="shortcut icon" href="#">
 </head>
 <body>
 	<div class="container">
@@ -21,7 +22,7 @@
 		<form method="post">
 			<div class="card-panel">
 				<div class="row">
-						<select name="idMoedaDestino" required="true">
+						<select id ="moedaTaxaCambio" name="idMoedaDestino" required="true">
 							<option value="" disabled selected>Moeda de Destino</option>
 							<option th:each="mDestino : ${destinos}"
 								th:text="${mDestino.nome}" th:value="${{mDestino.id_moeda}}" />
@@ -31,15 +32,23 @@
 					<input id="taxa" type="number" name="taxa" min=0 step="any" required="true">
 					<label for="taxa" class="active">Taxa de câmbio</label>
 				</div>
+				
+				
 			</div>
 			<button class="waves-effect waves-light btn" type="submit">Salvar</button>
 			<a class="waves-effect waves-light btn" href="/moeda">Voltar</a>
 		</form>
 	</div>
-
+<input type="hidden" id="mensagemMoeda" th:value="${mensagem}"/>
 	<script type="text/javascript"
 		src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript"
 		src="../materialize/js/materialize.min.js"></script>
+<script>
+	if(document.getElementById('mensagemMoeda').value){
+		var taxaCambioCadastro =  document.getElementById('mensagemMoeda').value;
+		M.toast({html: taxaCambioCadastro});
+	}
+</script>
 </body>
 </html>

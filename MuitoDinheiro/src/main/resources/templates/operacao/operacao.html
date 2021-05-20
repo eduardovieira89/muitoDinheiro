@@ -13,6 +13,7 @@
 <!--Let browser know website is optimized for mobile-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" />
 <link rel="stylesheet" href="../style/styleCss.css" />
+<link rel="shortcut icon" href="#">
 </head>	  
 <body>
 <form id="formOperacao" method="post" class="container" th:object="${operacao}">
@@ -69,7 +70,7 @@
     <div id="modalDetalhesOperacao" class="modal-content " th:if="${op}">
           <h4>Detalhes da operação</h4>
           <ul>
-          	<li><h5>Cliente: <span th:text="${op.cliente.nome}"></span></h5>  <span th:text="${op.dataOperacao}"></span></li>
+          	<li><h5>Cliente: <span th:text="${op.cliente.nome}"></span></h5>  <span th:text="${#temporals.format(op.dataOperacao, 'dd/MM/yyyy')}"></span></li>
           	<li>Valor Original: <span th:text="${op.valorOriginal}"></span> <span th:text="${op.taxaCambio.origemDestino.origem}"></span></li>
           	<li>Valor Convertido: <span th:text="${op.valorConvertido}"></span> <span th:text="${op.taxaCambio.origemDestino.destino}"></span></li>
           	<li>Taxa cobrada: <span th:text="${op.taxaCobrada}"></span> <span th:text="${op.taxaCambio.origemDestino.destino}"></span></li>
