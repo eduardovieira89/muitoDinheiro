@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<title>Sistema Muito Dinheiro</title>
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<!--Import materialize.css-->
+<link type="text/css" rel="stylesheet"
+	href="../materialize/css/materialize.min.css" media="screen,projection" />
+
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" />
+<link rel="stylesheet" href="../style/styleCss.css" />
+</head>	  
+<body>
+<div class="container">
+	<h3>Lista de Moedas</h3>
+	<div class="card-panel">
+		<table>
+		<thead>
+				<tr>
+					<th>Nome</th>
+					<th>País</th>
+					<th>Taxa de câmbio</th>
+					<th>Excluir</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="moeda: ${moedas}">
+					<td><span th:text="${moeda.nome}"></span></td>
+					<td><span th:text="${moeda.pais}"></span></td>
+					<td><a th:href="${(#mvc.url('MC#taxaCambio').arg(0, moeda.id_moeda)).build()}">Taxa de câmbio</a>
+					<td><a th:href="${(#mvc.url('MC#deletarMoeda').arg(0, moeda.id_moeda)).build()}"><i class="material-icons left">delete</i></a></td>
+			</tbody>
+		</table>
+	</div>
+	<a class="waves-effect waves-light btn" href="/moeda/cadastro">Adicionar Moeda</a>
+	<a class="waves-effect waves-light btn" href="/">Voltar</a>
+			
+			
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+</body>
+</html>

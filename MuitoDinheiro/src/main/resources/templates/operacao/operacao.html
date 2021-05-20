@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<title>Sistema Muito Dinheiro</title>
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<!--Import materialize.css-->
+<link type="text/css" rel="stylesheet"
+	href="../materialize/css/materialize.min.css" media="screen,projection" />
+
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" />
+<link rel="stylesheet" href="../style/styleCss.css" />
+</head>	  
+<body>
+<form id="formOperacao" method="post" class="container" th:object="${operacao}">
+	<h3>Nova Operação</h3>
+	<div class="card-panel">
+		<div class="input-field">
+					<input id="cliente" type="text" name="cliente" th:field="*{cliente.nome}" th:required="true"/>
+					<label for="cliente" class="active">Informe o nome do cliente:</label>
+		</div>
+				
+		<div class="row">
+			<div class="input-field col s6">		
+				<select id="moedaOrigem" name="taxaCambio.origemDestino.origem" th:required="true">
+					<option value="" disabled selected>Moeda de Origem</option>
+					<option th:each="origem : ${moedas}"
+							th:text="${origem.nome}"
+							th:value="${origem.id_moeda}"
+					/></select>
+			</div>
+			
+			
+			<div class="input-field col s6">
+				<select form="formOperacao" id ="moedaDestino" name="taxaCambio.origemDestino.destino" th:required="true">
+					<option value="" disabled selected>Moeda de Destino</option>
+					</select>
+			</div>
+		</div>		
+		<div>
+			<h5>Taxa de câmbio:  <span id="lTaxa"></span></h5>
+		</div>
+				
+				
+		<div class="input-field inline">
+			<input id="valorOriginal" type="number" name="valorOriginal" min=0 step="any" th:required="true"/>
+			<label for="valorOriginal" class="active">Informe o valor:</label>
+		</div>
+		
+		<div class="alert alert-success alert-dismissible" role="alert" th:if="${not #strings.isEmpty(mensagemRetorno)}">
+			<span th:text="${mensagemRetorno}"></span>
+		</div>
+	</div>
+	
+		
+			<button class="waves-effect waves-light btn" type="submit">Processar Operação</button>
+		
+		
+			<a class="waves-effect waves-light btn" href="/">Voltar</a>
+
+
+</form>
+
+  <!-- Modal Structure -->
+  <div id="modalOperacao" class="modal" >
+    <div id="modalDetalhesOperacao" class="modal-content " th:if="${op}">
+          <h4>Detalhes da operação</h4>
+          <ul>
+          	<li><h5>Cliente: <span th:text="${op.cliente.nome}"></span></h5>  <span th:text="${op.dataOperacao}"></span></li>
+          	<li>Valor Original: <span th:text="${op.valorOriginal}"></span> <span th:text="${op.taxaCambio.origemDestino.origem}"></span></li>
+          	<li>Valor Convertido: <span th:text="${op.valorConvertido}"></span> <span th:text="${op.taxaCambio.origemDestino.destino}"></span></li>
+          	<li>Taxa cobrada: <span th:text="${op.taxaCobrada}"></span> <span th:text="${op.taxaCambio.origemDestino.destino}"></span></li>
+          	<li></li>
+          </ul>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close waves-effect waves-green btn-flat">Ok</a>
+    </div>
+  </div>
+  
+<script 
+		type="text/javascript"
+		src="https://code.jquery.com/jquery-3.2.1.min.js"
+></script>
+<script 
+		
+		type="text/javascript"
+		src="../materialize/js/materialize.min.js"
+></script>
+
+
+</body>
+</html>

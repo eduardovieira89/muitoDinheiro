@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<title>Sistema Muito Dinheiro</title>
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<!--Import materialize.css-->
+<link type="text/css" rel="stylesheet"
+	href="../materialize/css/materialize.min.css" media="screen,projection" />
+
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" />
+<link rel="stylesheet" href="../style/styleCss.css" />
+</head>	   
+<body>
+<form class="container" method="post" action="">
+	<h3>Cadastro de Moedas</h3>
+	Nome da moeda:<input type="text" value="" name="nome" required="true"/>
+	País:<input type="text" value="" name="pais"/>
+	
+	<div class="row">
+		<div class="col s3">
+			<button class="waves-effect waves-light btn" type="submit">Salvar</button>
+		</div>
+		<div class="cols3">
+			<a class="waves-effect waves-light btn" href="/moeda">Voltar</a>
+		</div>
+	</div>
+</form>
+	
+
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
+</body>
+	  
+</html>

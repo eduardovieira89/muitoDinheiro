@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<title>Sistema Muito Dinheiro</title>
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<!--Import materialize.css-->
+<link type="text/css" rel="stylesheet"
+	href="../materialize/css/materialize.min.css" media="screen,projection" />
+
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" />
+<link rel="stylesheet" href="../style/styleCss.css" />
+</head>	  
+<body>
+<div class="container">
+	<h3>Relatório de operações</h3>
+	<div class="card-panel">
+	<form action="" method="post" th:object="${operacao}">
+		<div class="row">
+			<div class="input-field col s4">
+						<input id="cliente" type="text" name="cliente" th:field="*{cliente.nome}"/>
+						<label for="cliente" class="active">Cliente:</label>
+			</div>
+			<div class="input-field col s2">
+				<input id="dataInicial" type="text" class="datepicker" name="dataInicial"/>
+				<label for="dataInicial" class="active" name="dataInicial">Data Inicial:</label>
+			</div>
+			<div class="input-field col s2">
+				<input id="dataFinal" type="text" class="datepicker" name="dataFinal"/>
+				<label for="dataFinal" class="active">Data Final:</label>
+			</div>
+		</div>
+	<button class="waves-effect waves-light btn" type="submit">Pesquisar</button>
+	</form>
+	</div>
+	
+	<div class="card-panel">
+		<h5>Total das operações:  <span th:text="${somaValorConvertido}"></span></span></h5>
+		<h5>Total das taxas cobradas:  <span th:text="${somaTaxaCobrada}"></span></span></h5>
+	</div>
+	
+	
+	<div class="card-panel">
+	<table>
+	<thead>
+			<tr>
+				<th>Nome do cliente</th>
+				<th>Data</th>
+				<th>Valor original</th>
+				<th>Valor convertido</th>
+				<th>Taxa da casa</th>
+				<th>Moeda de origem</th>
+				<th>Moeda de destino</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="operacao: ${operacoes}">
+				<td><span th:text="${operacao.cliente.nome}"></span></td>
+				<td><span th:text="${#temporals.format(operacao.dataOperacao, 'dd/MM/yyyy')}"></span></td>
+				<td><span th:text="${operacao.valorOriginal}"></span></td>
+				<td><span th:text="${operacao.valorConvertido}"></span></td>
+				<td><span th:text="${operacao.taxaCobrada}"></span></td>
+				<td><span th:text="${operacao.taxaCambio.origemDestino.origem}"></span></td>
+				<td><span th:text="${operacao.taxaCambio.origemDestino.destino}"></span></td>
+		</tbody>
+	</table>
+	</div>
+	<br><br>
+	
+	<div class="row">
+		<div class="cols3">
+			<a class="waves-effect waves-light btn" href="/">Voltar</a>
+		</div>
+	</div>
+</div>
+
+
+
+
+<script 
+		type="text/javascript"
+		src="https://code.jquery.com/jquery-3.2.1.min.js"
+></script>
+<script 
+		type="text/javascript"
+		src="../materialize/js/materialize.min.js"
+></script>
+
+
+</body>
+</html>
