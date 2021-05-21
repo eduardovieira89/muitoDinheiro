@@ -25,7 +25,7 @@ $mvn clean
 $mvn install
 
 #Acesse a pasta template que o maven gerou
-$cd template
+$cd target
 
 #Execute o arquivo jar
 $java -jar MuitoDinheiro-0.0.1-SNAPSHOT.jar
