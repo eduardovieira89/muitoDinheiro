@@ -42,12 +42,12 @@ Ao abrir o navegador você terá a página inicial do sistema
 
 ### Moedas
 
-Primeiramente você deve clicar no botão Moedas, e depois no botão adicionar moeda para cadastrá-las no sistema.
+```$Clique no botão Moedas, e depois no botão adicionar moeda para cadastrá-las no sistema.```
 <h1 align="center">
   <img alt="PaginaInicial" title="#PaginaInicial" src="./MuitoDinheiro/screenshots/lista de moedas.JPG" />
 </h1>
 
-Colocar o nome da moeda (Obrigatório) e o País (opcional) e clicar em salvar.
+```$Coloque o nome da moeda (Obrigatório) e o País (opcional) e clique em salvar.```
 <h1 align="center">
   <img alt="PaginaInicial" title="#PaginaInicial" src="./MuitoDinheiro/screenshots/cadastro de moedas.JPG" />
 </h1>
@@ -62,7 +62,9 @@ Na lista de moedas, aparecerá todas as moedas cadastradas. No link taxa de câm
   <img alt="PaginaInicial" title="#PaginaInicial" src="./MuitoDinheiro/screenshots/lista de moedas2.JPG" />
 </h1>
 
-Aqui é cadastrado a taxa de câmbio, no combobox irá aparecer todas as moedas cadastradas, selecione uma moeda de destino e insira o valor da taxa de câmbio no input field.
+Aqui é cadastrado a taxa de câmbio, no combobox irá aparecer todas as moedas cadastradas.
+<br>
+ ```$Selecione uma moeda de destino e insira o valor da taxa de câmbio no input field.```
 <h1 align="center">
   <img alt="PaginaInicial" title="#PaginaInicial" src="./MuitoDinheiro/screenshots/cadastro de taxa de cambio.JPG" />
 </h1>
@@ -74,10 +76,14 @@ Ao clicar no botão salvar, aparecerá a mensagem que foi cadastrado com sucesso
 
 ### Operações
 
-Após cadastrar as moedas e suas taxas de câmbio, ja é possível realizar uma operação, para isso volte a página inicial e clique no botão operações.
+<p>
+ Após cadastrar as moedas e suas taxas de câmbio, ja é possível realizar uma operação, para isso volte a página inicial e clique no botão operações.
 Para fins de simplicidade, a chave primaria do cliente é seu nome, para um cliente ter várias operações deve-se  incluí-lo exatamente com o mesmo nome.
-Ao escolher a moeda de origem no combobox, uma função javascript faz uma requisição para o spring, que popula o combobox de moeda de destino somente com moedas que tem taxa de câmbio cadastradas para a moeda de origem.
+
+<p>
+ Ao escolher a moeda de origem no combobox, uma função javascript faz uma requisição para o spring, que popula o combobox de moeda de destino somente com moedas que tem taxa de câmbio cadastradas na moeda de origem.
 Ao selecionar a moeda de destino outra função javascript busca o valor da taxa de câmbio e mostra na tela.
+</p>
 Insira o nome do cliente, moeda de origem, moeda de destino, o valor e clique em processar operação.
 <h1 align="center">
   <img alt="PaginaInicial" title="#PaginaInicial" src="./MuitoDinheiro/screenshots/cadastro de operacao.JPG" />
@@ -89,12 +95,12 @@ Após processar a operação, uma janela modal é mostrada com os detalhes da op
 
 ### Relatório
 
-Por fim temos os relatórios de operações, onde ao entrar, retorna todas as operações realizadas do dia. É possível fazer pesquisa de várias formas
+Por fim temos os relatórios de operações, onde ao entrar, retorna todas as operações realizadas do dia. É possível fazer pesquisa de várias formas:
 - Somente por cliente, que irá retornar todas as operações do cliente.
 - Cliente e data de inicio. Retornará as operações do cliente selecionado, da data inicial até o dia atual.
 - Cliente, data inicial e final, que retornará as operações do cliente no intervalo de datas selecionado.
 - Por data de inicio e fim, que retornará todos os clientes no intervalo de datas selecionado.
-O resultado da busca retornará o valor total e a taxa cobrada. Retornará também uma tabela com o nome do cliente, data da operação, valor original, valor convertido, taxa da casa, moeda de origem e moeda de destino da operação.
+<p>O resultado da busca retornará o valor total e a taxa cobrada. Retornará também uma tabela com o nome do cliente, data da operação, valor original, valor convertido, taxa da casa, moeda de origem e moeda de destino da operação.
 <h1 align="center">
   <img alt="PaginaInicial" title="#PaginaInicial" src="./MuitoDinheiro/screenshots/relatorio de operacoes.JPG" />
 </h1>
