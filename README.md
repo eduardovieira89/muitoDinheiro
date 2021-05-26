@@ -36,9 +36,9 @@ $java -jar MuitoDinheiro-0.0.1-SNAPSHOT.jar
 
 ## Instruções de utilização
 Ao abrir o navegador você terá a página inicial do sistema
-<h1 align="center">
+
   <img alt="PaginaInicial" title="#PaginaInicial" src="./MuitoDinheiro/screenshots/index.JPG" />
-</h1>
+
 
 ### Moedas
 
